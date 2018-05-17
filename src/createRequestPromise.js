@@ -72,12 +72,14 @@ export default function ({
 
         axios(configs)
         .then((res)=> {
+          console.log(res)
           let resBody = params.camelizeResponse ? camelizeKeys(res.data) : res.data
           dispatchSuccessType(resBody)
           processAfterSuccess(resBody)
           resolve(resBody)
         })
         .catch((error)=> {
+          console.log(error)
           let err = error.response
           function proceedError () {
             handleError(err)
